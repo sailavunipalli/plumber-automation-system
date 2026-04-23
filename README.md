@@ -5,7 +5,7 @@ When a customer submits a lead form, the system automatically notifies the
 plumber and follows up with the customer — zero manual work required.
 
 ## Live Demo
-👉 [View Landing Page](https://sailavuni.github.io/landingpage/)
+👉 [View Landing Page](https://sailavunipalli.github.io/plumber-automation-system/)
 
 ## How It Works
 
