@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>24/7 Emergency Plumbing Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #e63329;
+      --dark: #0d0d0d;
+      --dark2: #161616;
+      --card: #1c1c1c;
+      --border: #2a2a2a;
+      --text: #f0ece4;
+      --muted: #888;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ALERT BAR */
+    .alert-bar {
+      background: var(--red);
+      color: #fff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      animation: pulse-bar 2s infinite;
+    }
+    @keyframes pulse-bar {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(13,13,13,0.96);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+    }
+    .logo span { color: var(--red); }
+    .nav-phone {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 60px 24px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(230,51,41,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid var(--red);
+      color: var(--red);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 10vw, 5rem);
+      line-height: 1;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+    .hero h1 .red { color: var(--red); }
+    .hero p {
+      font-size: 1rem;
+      color: #aaa;
+      max-width: 380px;
+      margin: 0 auto 32px;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      box-shadow: 0 0 30px rgba(230,51,41,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(230,51,41,0.55);
+    }
+    .hero-note {
+      margin-top: 14px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* TRUST STRIP */
+    .trust {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      padding: 28px 24px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: #bbb;
+      font-weight: 500;
+    }
+    .trust-item .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    /* SECTIONS */
+    .section { padding: 52px 24px; }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      line-height: 1.05;
+      margin-bottom: 32px;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 16px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .service-card:hover { border-color: var(--red); transform: translateY(-2px); }
+    .service-icon { font-size: 1.6rem; margin-bottom: 8px; }
+    .service-name { font-weight: 700; font-size: 0.88rem; }
+    .service-desc { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+
+    /* WHY US */
+    .why { background: var(--dark2); }
+    .why-list { display: flex; flex-direction: column; gap: 16px; }
+    .why-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 18px;
+      background: var(--card);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .why-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--red);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 40px;
+    }
+    .why-text strong { display: block; font-size: 0.95rem; margin-bottom: 4px; }
+    .why-text span { font-size: 0.8rem; color: var(--muted); }
+
+    /* FORM */
+    .form-section { background: var(--dark); padding: 52px 24px; }
+    .form-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 24px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .form-box .section-title { font-size: 2rem; margin-bottom: 8px; }
+    .form-box .sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 28px; }
+    .tally-placeholder {
+      background: var(--dark2);
+      border: 2px dashed var(--border);
+      border-radius: 10px;
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    .tally-placeholder strong {
+      display: block;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    /* REVIEWS */
+    .testimonials { background: var(--dark2); }
+    .reviews-grid { display: flex; flex-direction: column; gap: 14px; }
+    .review-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .stars { color: #f5c518; font-size: 0.9rem; margin-bottom: 8px; }
+    .review-text { font-size: 0.85rem; color: #ccc; margin-bottom: 12px; line-height: 1.5; }
+    .reviewer { font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+
+    /* FOOTER */
+    footer {
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; margin-bottom: 8px; }
+    .footer-logo span { color: var(--red); }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { margin-top: 16px; display: flex; justify-content: center; gap: 20px; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; }
+
+    /* STICKY CTA */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--red);
+      color: #fff;
+      text-align: center;
+      padding: 16px 24px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      z-index: 999;
+      display: block;
+      box-shadow: 0 -4px 20px rgba(230,51,41,0.4);
+    }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (min-width: 600px) {
+      .services-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="alert-bar">⚡ 24/7 Emergency Response — We Arrive in 60 Minutes or Less</div>
+
+  <nav>
+    <div class="logo">Pro<span>Fix</span> Plumbing</div>
+    <a href="tel:+910000000000" class="nav-phone">📞 Call Now</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">🔴 Available Right Now</div>
+    <h1>Got A<br/><span class="red">Plumbing</span><br/>Emergency?</h1>
+    <p>We fix leaks, bursts, blockages & more — 24 hours a day, 7 days a week. Hyderabad's most trusted plumbers.</p>
+    <a href="#request" class="hero-cta">Request Service Now →</a>
+    <p class="hero-note">Free estimate · No call-out fee · Arrives in 60 mins</p>
+  </section>
+
+  <div class="trust">
+    <div class="trust-item"><span class="dot"></span> Licensed & Insured</div>
+    <div class="trust-item"><span class="dot"></span> 500+ Happy Customers</div>
+    <div class="trust-item"><span class="dot"></span> Upfront Pricing</div>
+    <div class="trust-item"><span class="dot"></span> Same-Day Service</div>
+  </div>
+
+  <section class="section fade-in">
+    <div class="section-label">What We Fix</div>
+    <div class="section-title">Our Services</div>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">🚰</div><div class="service-name">Leaking Pipes</div><div class="service-desc">Fast detection & repair</div></div>
+      <div class="service-card"><div class="service-icon">🚽</div><div class="service-name">Blocked Drains</div><div class="service-desc">Cleared same day</div></div>
+      <div class="service-card"><div class="service-icon">🔥</div><div class="service-name">Geyser & Heater</div><div class="service-desc">Install & repair</div></div>
+      <div class="service-card"><div class="service-icon">🏠</div><div class="service-name">Bathroom Fitting</div><div class="service-desc">Full fitting services</div></div>
+      <div class="service-card"><div class="service-icon">💧</div><div class="service-name">Water Tank</div><div class="service-desc">Cleaning & repair</div></div>
+      <div class="service-card"><div class="service-icon">🔧</div><div class="service-name">General Maintenance</div><div class="service-desc">All plumbing work</div></div>
+    </div>
+  </section>
+
+  <section class="section why fade-in">
+    <div class="section-label">Why Choose Us</div>
+    <div class="section-title">We Show Up.<br/>Every Time.</div>
+    <div class="why-list">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <div class="why-text"><strong>60-Minute Arrival</strong><span>We guarantee to be at your door within an hour — day or night.</span></div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <div class="why-text"><strong>Upfront Pricing</strong><span>No hidden costs. You know the price before we start any work.</span></div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <div class="why-text"><strong>Experienced Team</strong><span>All plumbers are licensed, background-checked, 5+ years experience.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="form-section" id="request">
+    <div class="form-box fade-in">
+      <div class="section-label">Get Help Fast</div>
+      <div class="section-title">Book A Plumber</div>
+      <p class="sub">Fill out the form and we'll contact you within 5 minutes.</p>
+
+      <!-- ================================================
+           REPLACE THIS WITH YOUR TALLY EMBED CODE
+           Tally → Share → Embed → copy iframe → paste here
+           ================================================ -->
+      <div class="tally-placeholder">
+        <strong>📋 Paste Your Tally Form Here</strong>
+        Tally → Share → Embed → copy the iframe code and replace this div
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section testimonials fade-in">
+    <div class="section-label">What Customers Say</div>
+    <div class="section-title">Real Reviews</div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Pipe burst at 2am and they arrived within 45 minutes. Absolute lifesavers!"</p>
+        <div class="reviewer">— Ravi K., Banjara Hills</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Very professional, gave me the quote upfront and didn't charge a rupee more."</p>
+        <div class="reviewer">— Priya M., Madhapur</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Fixed my bathroom fitting perfectly. Clean work, no mess left behind."</p>
+        <div class="reviewer">— Syed A., Gachibowli</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Pro<span>Fix</span> Plumbing</div>
+    <p>Hyderabad, Telangana · Available 24/7</p>
+    <div class="footer-links">
+      <a href="tel:+910000000000">Call Us</a>
+      <a href="#request">Book Online</a>
+    </div>
+  </footer>
+
+  <a href="#request" class="sticky-cta">🚨 Request Emergency Plumber Now</a>
+
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    faders.forEach(f => observer.observe(f));
+  </script>
+
+</body>
+</html>
